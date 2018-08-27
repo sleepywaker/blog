@@ -23,20 +23,14 @@ export default {
 </script>
 
 <style scoped>
-li{
-  list-style:none;
-  float:left;
-  margin-left:40px;
-}
 .header{
   height:140px;
   line-height: 140px;
   width:100%;
-  margin-right:320px;
   background-color: #C4C4C4;
+  border-bottom: 2px solid #888;
 }
 .header-content{
-  position:relative;
   width:80%;
   margin:0 auto;
 }
@@ -48,14 +42,12 @@ li{
   line-height: 120px;
 }
 .nav{
- 
   float:right;
-
 }
 @media screen and (max-width:800px){
   .logo{
-  float:none;
-}
+    float:none;
+  }
   .nav{
     height:40px;
     float:none;

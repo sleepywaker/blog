@@ -11,7 +11,13 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      redirect: '/1',
+      children:[
+        {path:'/1',component:() => import('./views/homeChild/page1.vue')},
+        {path:'/2',component:() => import('./views/homeChild/page2.vue')},
+        {path:'/3',component:() => import('./views/homeChild/page3.vue')}
+      ]
     },
     {
       path: '/tag',
@@ -72,6 +78,17 @@ export default new Router({
       path: '/art10',
       name: 'Art10',
       component: () => import('./views/articles/art10.vue')
+    },
+    {
+      path: '/page2',
+      name: 'homepage2',
+      component: () => import('./views/HomePage2.vue'),
+      redirect: '/4',
+      children:[
+        {path:'/4',component:() => import('./views/homeChild/page4.vue')},
+        {path:'/5',component:() => import('./views/homeChild/page5.vue')},
+        {path:'/6',component:() => import('./views/homeChild/page6.vue')}
+      ]
     }
   ]
 })

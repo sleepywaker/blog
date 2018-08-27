@@ -10,13 +10,13 @@
         </div>
         <div :class="{infoIn:this.$store.state.isInfoShow,infoOut:!this.$store.state.isInfoShow}">
             <div>
-                <img src="@/assets/me.jpg" alt="sleepywaker">
-                <p>如果有机会见到年轻时的自己，我想告诉他“抽烟一点也不酷”</p>
-                <p>ECMAScript | JavaScript | CSS3 | HTML5 | Node.js | MongoDB</p>
-                <ul>
-                    <li><a href="http://github.com/sleepywaker" target="_blank">github</a></li>
-                    <li><a href="http://weibo.com/6348822685">weibo</a></li>
-                </ul>
+                <img src="@/assets/me.jpg" alt="sleepywaker" class="face">
+                <p>如果有机会见到年轻时的自己，我想对他说:“抽烟一点也不酷”。</p>
+                <div class="site-nav"> <router-link to="/archive">日志</router-link>|<router-link to="/tag">分类</router-link></div>       
+                <div class="contact-me">
+                <a href="http://github.com/sleepywaker" target="_blank"><img src="" alt="github"></a>
+                <a href="http://weibo.com/6348822685" target="_blank"><img src="" alt="weibo"></a>  
+                </div>
             </div>
         </div>
     </div>
@@ -36,6 +36,23 @@ export default {
 }
 </script>
 <style >
+.face{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.site-nav{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.site-nav a{
+    color:#92B3E4;
+    margin-left:10px;
+    margin-right:10px;
+    text-decoration: none;
+}
+.contact-me a{
+    color:#92B3E4;
+}
 .icon{
     position: fixed;
     right:20px;
@@ -114,23 +131,27 @@ to {right:0;}
 .infoIn{
     width:320px;
     height:100vh;
-    background-color:#B3B3B3;
+    background-color:#1F437A;
     position:fixed;
     right:0;
     top:0;
+    border-left:2px solid #888;
     animation:in 0.5s ease-out;
+    color:#92B3E4;
 }
 .infoOut{
     width:320px;
     height:100vh;
-    background-color:#B3B3B3;
+    background-color:#1F437A;
     position:fixed;
     right:-320px;
-    top:0; 
+    top:0;
+    border-left:2px solid #888;
+    color:#92B3E4;
 }
 @media screen and (max-width: 800px) {
-    .site-info {
-       display:none;
+    .site-info{
+        display:none;
     }
 }
 </style>

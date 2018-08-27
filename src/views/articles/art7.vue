@@ -4,104 +4,143 @@
           <Header/>
           <div class="archive">
               <div class="article-content"> 
-                  <h1>{{artList.title}}</h1>
-                  <p>函数
-                      调用带参数的函数
-                      在调用函数时，您可以向其传递值，这些值被称为参数。
-                      这些参数可以在函数中使用。
-                      您可以发送任意多（ECMAScript最多 25 个）的参数，由逗号 (,) 分隔：
-                      myFunction(argument1,argument2)
-                      变量和参数必须以一致的顺序出现。第一个变量就是第一个被传递的参数的给定的值，以此类推
-                      
-                      带有返回值的函数
-                      有时，我们会希望函数将值返回调用它的地方。
-                      通过使用 return 语句就可以实现。
-                      在使用 return 语句时，函数会停止执行，并返回指定的值。
-                      在您仅仅希望退出函数时 ，也可使用 return 语句。返回值是可选的：
-                      function myFunction(a,b)
-                      {
-                      if (a>b)
-                        {
-                        return;
-                        }
-                      x=a+b
-                      }
-                      如果 a 大于 b，则上面的代码将退出函数，并不会计算 a 和 b 的总和。
-                      
-                      局部 JavaScript 变量
-                      在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。
-                      您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。
-                      只要函数运行完毕，本地变量就会被删除。
-                      
-                      全局 JavaScript 变量
-                      在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
-                      
-                      JavaScript 变量的生存期
-                      JavaScript 变量的生命期从它们被声明的时间开始。
-                      局部变量会在函数运行以后被删除。
-                      全局变量会在页面关闭后被删除。
-                      
-                      向未声明的 JavaScript 变量来分配值
-                      如果您把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。
-                      这条语句：carname="Volvo";
-                      将声明一个全局变量 carname，即使它在函数内执行。
-                      模拟函数重载
-                      用 arguments 对象判断传递给函数的参数个数，即可模拟函数重载：
-                      function doAdd() {
-                        if(arguments.length == 1) {
-                          alert(arguments[0] + 5);
-                        } else if(arguments.length == 2) {
-                          alert(arguments[0] + arguments[1]);
-                        }
-                      }
-                      
-                      doAdd(10);	//输出 "15"
-                      doAdd(40, 20);	//输出 "60"
-                      
-                      函数名只是指向函数对象的引用值，行为就像其他对象一样。,甚至可以使两个变量指向同一个函数.
-                      var doAdd = new Function("iNum", "alert(iNum + 10)");
-                      var alsodoAdd = doAdd;
-                      doAdd(10);	//输出 "20"
-                      alsodoAdd(10);	//输出 "20"
-                      在这里，变量 doAdd 被定义为函数，然后 alsodoAdd 被声明为指向同一个函数的指针。用这两个变量都可以执行该函数的代码，并输出相同的结果 - "20"。因此，如果函数名只是指向函数的变量，那么可以把函数作为参数传递给另一个函数吗？回答是肯定的！
-                      function callAnotherFunc(fnFunction, vArgument) {
-                        fnFunction(vArgument);
-                      }
-                      var doAdd = new Function("iNum", "alert(iNum + 10)");
-                      callAnotherFunc(doAdd, 10);	//输出 "20"
-                      在上面的例子中，callAnotherFunc() 有两个参数 - 要调用的函数和传递给该函数的参数。这段代码把 doAdd() 传递给 callAnotherFunc() 函数，参数是 10，输出 "20"。
-                      注意：尽管可以使用 Function 构造函数创建函数，但最好不要使用它，因为用它定义函数比用传统方式要慢得多。不过，所有函数都应看作 Function 类的实例。
-                      
-                      Function 对象也有与所有对象共享的 valueOf() 方法和 toString() 方法。这两个方法返回的都是函数的源代码，在调试时尤其有用。例如：
-                      
-                      function doAdd(iNum) {
-                        alert(iNum + 10);
-                      }
-                      
-                      document.write(doAdd.toString());
-                      //输出function doAdd(iNum) { alert(iNum + 10); }
-                      
-                      
-                      闭包
-                      闭包（closure），指的是词法表示包括不被计算的变量的函数，也就是说，函数可以使用函数之外定义的变量。
-                      复杂的闭包实例
-                      在一个函数中定义另一个会使闭包变得更加复杂。例如：
-                      var iBaseNum = 10;
-                      function addNum(iNum1, iNum2) {
-                        function doAdd() {
-                          return iNum1 + iNum2 + iBaseNum;
-                        }
-                        return doAdd();
-                      }
-                      这里，函数 addNum() 包括函数 doAdd() （闭包）。内部函数是一个闭包，因为它将获取外部函数的参数 iNum1 和 iNum2 以及全局变量 iBaseNum 的值。 addNum() 的最后一步调用了 doAdd()，把两个参数和全局变量相加，并返回它们的和。
-                      
-                      这里要掌握的重要概念是，doAdd() 函数根本不接受参数，它使用的值是从执行环境中获取的。
-                      
-                      可以看到，闭包是 ECMAScript 中非常强大多用的一部分，可用于执行复杂的计算。
-                      
-                      提示：就像使用任何高级函数一样，使用闭包要小心，因为它们可能会变得非常复杂。
-                      
-                  </p>
+                  <p class="fontA">{{artList.title}}</p>
+                  <p>{{artList.date}}</p>
+                  <p>一、封装性</p>
+
+                 <p>  封装就是把抽象出来的数据和对数据的操作封装在一起，数据被保护在内部，程序的其它部分只有通过被授权的操作(成员方法)，才能对数据进行操作。
+                  
+                  　 JS封装只有两种状态，一种是公开的，一种是私有的。
+                      案例：</p>
+              <p>    function Person(name,sal){</p>
+             <p>       this.name=name;         //公开</p>  
+               <p>     var sal=sal;                 //私有</p>  
+               <p>      this.showInfo=function(){ //公开</p> 
+               <p>          window.alert(this.name+" "+sal);</p> 
+               <p>      }</p> 
+                <p>      function showInfo2(){      //把函数私有化</p>
+                <p>        window.alert("你好"+this.name+" "+sal);</p>  
+                <p>      }</p>
+                <p>  }</p>
+ 
+                 <p>  通过构造函数来分配成员方法，给每个对象分配一份独立的代码。这样的弊端就是如果对象实例有很多，那函数的资源占用就会很大，而且有可能造成内存泄漏。
+                  通过prototype给所有的对象添加方法，但是这种方式不能去访问类的私有变量和方法。</p>
+                  
+                <p> 原型继承</p> 
+              <p>   function A(){  </p> 
+               <p>       this.color = 'red';  </p>
+                <p> }  </p> 
+              <p>    function B(){}  </p>
+               <p>   function C(){}  </p>
+              <p>    B.prototype = new A();  </p>
+              <p>    C.prototype = new B(); </p> 
+            <p>     // 测试原型继承 </p>  
+             <p>    var c = new C();</p>   
+              <p>    console.log(c.color); // red </p>
+                  
+             <p>     原型继承显得很简单，不需要每次构造都调用父类的构造函数，也不需要通过复制属性的方式就能快速实现继承。但它也存在一些缺点：
+                  ① 每个类型只有一个原型，所以不支持多重继承（即一个子类继承自多个父类）。
+                  ② 不能很好的支持多参数或动态参数的父类，显得不够灵活。
+                  ③ 占用内存多，每次继承都需要实例化一个父类，这样会存在内存占用过多的问题。</p>
+                  
+               <p>  混合继承（构造+原型）</p> 
+                  
+               <p>   混合继承是把多种继承方式一起使用，发挥各个优势，来实现各种复杂的应用。
+                  最常见的就是把类继承和原型继承一起使用。做法是将需要独立的属性方法放入构造函数中，而可以共享的部分则放入原型中，这样做可以最大限度节省内存而又保留对象实例的独立性。注意：
+                  1、把方法写在原型中比写在构造函数中消耗的内存更小，因为在内存中一个类的原型只有一个，写在原型中的行为可以被所有实例共享，实例化的时候并不会在实例的内存中再复制一份
+                  而写在类中的方法，实例化的时候会在每个实例中再复制一份，所以消耗的内存更高。
+                  所以没有特殊原因，我们一般把属性写到类中，而行为写到原型中。
+                  2、构造函数中定义的属性和方法比原型中定义的属性和方法的优先级高，如果定义了同名称的属性和方法，构造函数中的将会覆盖原型中的。</p>
+               <p>  function A(x,y){  </p> 
+                <p>    this.x = x; </p>   
+                <p>     this.y = y;  </p> 
+               <p> }  </p>  
+               <p>  A.prototype.add = function(){ </p>  
+                <p>     return (this.x-0) + (this.y-0); </p>  
+                <p> } </p>  
+               <p>  function B(x,y){ </p>  
+                 <p>    A.call(this,x,y); </p>  
+                <p>  }  </p>
+                <p>  B.prototype = new A(); </p> 
+                  
+                <p> // 测试 </p>  
+                <p>  var b = new B(2,1);</p>  
+                 <p> console.log(b.x); // 2 </p> 
+                 <p>console.log(b.add()); // 3</p> 
+                  
+                  
+                 <p>多重继承</p> 
+                  
+                 <p>继承一般包括单向继承和多向继承，单向继承模式较为简单，每个子类有且仅有一个超类，多重继承是一个比较复杂的继承模式。一个子类可拥有多个超类。JavaScript原型继承不支持多重继承，但可通过混合模式来实现多重继承。下面让类C来继承类A和类B：
+                  复制代码</p> 
+                 <p> function A(x){ </p> 
+                  <p>    this.x = x;  </p>
+                 <p>}</p>   
+                 <p> A.prototype.hi = function(){ </p> 
+                  <p>    console.log('hi'); </p> 
+                 <p>}  </p> 
+                 <p>function B(y){ </p>  
+                  <p>  this.y = y;  </p>  
+                  <p> } </p> 
+                 <p>  B.prototype.hello = function(){</p>  
+                   <p>   console.log('hello'); </p> 
+                  <p> } </p> 
+                <P>  // 给Function增加extend方法  </P>
+                 <p> Function.prototype.extend = function(obj) {</p>  
+                  <p>    for(var item in obj) {  </p>
+                  <p>      this.constructor.prototype[item] = obj[item];</p>    
+                  <p>   }  </p> 
+                 <p> } </p> 
+                 <p> / 在类C内部实现继承</p>  
+                 <p> function C(x,y){  </p>
+                 <p>    A.call(this,x); </p>  
+                  <p>    B.call(this,y);</p>  
+                 <p> };</p>  
+                 <p> C.extend(new A(1));</p>  
+                <p>  C.extend(new B(2)); </p> 
+                  
+                 <p>// 通过复制继承后，C变成了一个对象，不再是构造函数了，可以直接调用 </p>  
+                <p> C.hi(); // hi  </p> 
+               <p> C.hello(); // hello</p>    
+                 <p> console.log(C.x); // 1 </p> 
+                 <p> console.log(C.y); // 2  </p>
+                 <p>复制代码</p> 
+                <p> 在js中实现类继承，需要设置3点：</p> 
+                  
+              <p>   ① 在子类构造函数结构体内，使用函数call()调用父类构造函数，把子类的参数传递给调用函数如上面的例子：A.call(this,x) 这样子类可以继承父类的所有属性和方法。
+                  ② 在子类和父类之间建立原型链，如上例：B.prototype = new A() 为了实现类的继承必须保证他们原型链上的上下级关系。即设置子类的prototype 属性指向父类的一个实例即可。
+                  ③ 恢复子类原型对象的构造函数， 如上例：B.prototype.constructor = B 
+                  在类继承中，call() 和 apply() 方法被频繁使用，它们之间的功能和用法都是相同的，唯一区别就是第2个参数类型不同。</p> 
+                  
+                  
+              <p>  js如何实现重载</p>  
+                  
+              <p>   复制代码</p> 
+              <p>  //js怎么实现重载.通过判断参数的个数来实现重载</p>   
+               <p>  function Person(){ </p> 
+                <p>      this.test1=function (){ </p>
+                 <p>      if(arguments.length==1){ </p>   
+                  <p>           this.show1(arguments[0]); </p> 
+                   <p>    }else if(arguments.length==2){ </p>   
+                    <p>        this.show2(arguments[0],arguments[1]);</p>   
+                    <p>    }else if(arguments.length==3){ </p>  
+                       <p>      this.show3(arguments[0],arguments[1],arguments[2]);</p>  
+                      <p>   } </p> 
+                     <p>}</p>  
+                    <p>  this.show1=function(a){ </p>
+                     <p>    window.alert("show1()被调用"+a);</p>  
+                     <p> } </p>
+                     <p> this.show2=function(a,b){ </p>
+                        <p> window.alert("show2()被调用"+"--"+a+"--"+b);</p>  
+                    <p>} </p> 
+                     <p> function show3(a,b,c){ </p>
+                    <p>    window.alert("show3()被调用"); </p>  
+                    <p>  } </p>
+                 <p> }</p> 
+                <p> var p1=new Person(); </p> 
+                <p> //js中不支持重载. </p>
+                 <p> p1.test1("a","b"); </p>
+                <p> p1.test1("a");</p> 
               </div>
           </div>
           <Footer/>
@@ -111,6 +150,7 @@
       </template>
         
       <script>
+      import './../../assets/css/articles.css'
       import Header from '@/components/Header.vue'
       import Footer from '@/components/Footer.vue'
       import Siteinfo from '@/components/Siteinfo.vue'
@@ -142,7 +182,6 @@
           box-sizing:border-box;
           width:100%;
           background-color:#BBE4FF;
-          color:#fff;
         }
         .title{
           display:block;

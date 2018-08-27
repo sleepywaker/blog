@@ -5,10 +5,12 @@
     <Header/>
     <div class="archive">
       <div class="article-content">
-      <span>2018</span>
+      <div class="yearStyle">2018</div>
       <ul>
-        <li  v-for="item in artList"  v-if="item.date.indexOf('2018')>-1" > 
-          <router-link class='title'    :to="{path:item.path}" >{{item.title}}</router-link>
+        <li  v-for="item in artList"  v-if="item.date.indexOf('2018')>-1" >
+          <div class='title'>
+          <div class="date">{{item.date}}</div> <div class="artLink"> <router-link :to="{path:item.path}" >{{item.title}}</router-link></div>
+          </div> 
         </li>
       </ul> 
     </div>
@@ -47,22 +49,76 @@ import articles from './../assets/articles.json'
 </script>
 <style scoped>
   .archive{
-    min-height:calc(100vh - 210px);
+    min-height:calc(100vh - 220px);
     box-sizing:border-box;
     width:100%;
     background-color:#BBE4FF;
+    position:relative;
+    padding-top:20px;
+    padding-bottom:20px;
+  }
+  .yearStyle{
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:left;
+    padding-left:10px;
+    border-bottom:2px dotted #088DE7;
+  }
+  .yearStyle::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    margin-left: -4px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: #6BC1FA;
+    border-radius: 50%;
   }
   .article-content{
     width:60%;
     margin:0 auto;
   }
   .title{
-    display:block;
     width:100%;
-    height:40px;
     text-align: left;
     line-height:40px;
+    border-bottom: 1px dashed #A89BA6;
+    position:relative;
+  }
+  .title:hover{
     border-bottom: 1px dashed #000;
+  }
+  .title:hover::before{
+    background: #088DE7;
+  }
+  .title::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    margin-left: -4px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: #6BC1FA;
+    border-radius: 50%;
+  }
+  .date{
+    width:80px;
+    margin-left:10px;
+    font-size: 12px;
+    float:left;
+  }
+  .artLink{
+    margin-left:100px;
+    height:100%;
+  }
+  
+  a{
+    text-decoration-line:none;
   }
   @keyframes in{
     from{
@@ -88,17 +144,18 @@ import articles from './../assets/articles.json'
     padding-right:0;
     animation:out 0.5s ease-out;
   }
-  a{
-    text-decoration-line:none;
-  }
   @media screen and (max-width:800px){
   .article-content{
-    width:100%;
+    width:90%;
   }
   .nav{
     height:40px;
     float:none;
     line-height:40px;
   }
+  .infoShow,.infoHide{
+      padding-right:0;
+      animation: none;
+    }
 }
 </style>

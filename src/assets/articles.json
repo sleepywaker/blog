@@ -36,35 +36,35 @@
     }, 
     "art5":{
         "path":"art5",
-        "title":"js踩坑记录",
+        "title":"js学习记录",
         "date":"2018-6-19",
         "tag":"js",
         "orgAddress":""
     },
     "art4":{
         "path":"art4",
-        "title":"根据数组对象的某个属性值找到指定的元素",
+        "title":"通过数组filter（）方法选取指定的元素",
         "date":"2018-5-30",
         "tag":"js",
         "orgAddress":""
     },
     "art3":{
         "path":"art3",
-        "title":"css常用类名",
+        "title":"css常用命名",
         "date":"2018-5-21",
         "tag":"css",
         "orgAddress":""
     },
     "art2":{
         "path":"art2",
-        "title":"HTML语义化相关",
+        "title":"HTML语义化标签",
         "date":"2018-4-22",
         "tag":"html",
         "orgAddress":""
     },
     "art1":{
         "path":"art1",
-        "title":"css布局相关",
+        "title":"css布局基础",
         "date":"2018-4-19",
         "tag":"css",
         "orgAddress":""

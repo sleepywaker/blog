@@ -1,0 +1,43 @@
+.fontA{
+    font-size:1.8rem;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+.fontB{
+    font-size: 1.4rem;
+}
+.fontC{
+    font-size: 1.2rem;
+}
+.fontD{
+    font-size: 1rem;
+}
+.fontE{
+    font-weight:600;
+}
+.left20{
+    margin-left:20px;
+  }
+.left40{
+    margin-left:40px;
+}
+.archive{
+    min-height:calc(100vh - 210px);
+    box-sizing:border-box;
+    width:100%;
+    background-color:#BBE4FF;
+    line-height:30px;
+    padding-bottom: 20px;
+}
+.article-content{
+  width:60%;
+  margin:0 auto;
+  text-align:left;
+}
+@media screen and (max-width:800px){
+  .article-content{
+    width:80%;
+    margin:0 auto;
+    text-align:left;
+  }
+}

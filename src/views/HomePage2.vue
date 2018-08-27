@@ -5,7 +5,7 @@
   <div class="home">
       <router-view></router-view>
       <div class="linkStyle">
-      <router-link to="/1">1</router-link><router-link to="/2">2</router-link><router-link to="/3">3</router-link> <router-link to="/page2">下一页</router-link>
+     <router-link to="/">上一页</router-link> <router-link to="/4">4</router-link><router-link to="/5">5</router-link><router-link to="/6">6</router-link>
       </div>
   </div>
   <Footer/>

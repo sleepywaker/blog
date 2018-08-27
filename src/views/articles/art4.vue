@@ -4,30 +4,26 @@
       <Header/>
       <div class="archive">
           <div class="article-content"> 
-              <h1>{{artList.title}}</h1>
-              <p>
-                  现在有一个数组对象,也就是数组元素是对象类型,现在的需求是根据对象的某个属性值,找到该数组对应的元素(对象),比如根据"bianma"=="11",找到对应的"name"为"商品房" : 
-                  该数组对象数据如下: 
-                   
-                  var datas = [
-                      {
-                        "name": "商品房",
-                        "bianma": "11"
-                      },
-                      {
-                        "name": "商铺",
-                        "bianma": "12"
-                      }
-                   ]
-                   
-                  我们可以通过对数组进行筛选操作:
-                  var data= datas.filter(function(item){
-                       return item.bianma == "12"; 
-                  })
-                  console.log(data); // [{name: "商铺", bianma: "12"}]
-                  filter() 方法将匹配元素集合缩减为匹配指定选择器的元素.该方法不改变原数组,返回的是筛选后满足条件的数组.
-                  
-              </p>
+              <p class="fontA">{{artList.title}}</p>
+              <p>{{artList.date}}</p>
+              <p class="fontC">现在有一个数组对象,也就是数组元素是对象类型,现在的需求是根据对象的某个属性值,找到该数组对应的元素(对象),比如根据"bianma"=="11",找到对应的"name"为"商品房" : 
+                该数组对象数据如下: </p>
+                <p>var datas = [        </p>
+                <p class="left20">   {                  </p> 
+                <p class="left40">   "name": "商品房",   </p>
+                <p class="left40">    "bianma": "11"    </p>  
+                <p class="left20">   },                  </p> 
+                <p class="left20">   {                   </p> 
+                <p class="left40">    "name": "商铺",    </p> 
+                <p class="left40">    "bianma": "12"     </p> 
+                <p class="left20">   }                   </p> 
+                <p>]                      </p>
+              <p class="fontC"> 我们可以通过对数组进行筛选操作:(filter 为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或 等价于 true 的值 的元素创建一个新数组。)</p>
+              <p>var data= datas.filter(function(item){</p> 
+              <p class="left20">       return item.bianma == "12";    </p> 
+              <p>   });                                 </p> 
+              <p> console.log(data); // [{name: "商铺", bianma: "12"}]</p>  
+              <p class="fontC">  filter() 方法将匹配元素集合缩减为匹配指定选择器的元素.该方法不改变原数组,返回的是筛选后满足条件的数组.</p>
           </div>
       </div>
       <Footer/>
@@ -37,6 +33,7 @@
   </template>
     
   <script>
+  import './../../assets/css/articles.css'
   import Header from '@/components/Header.vue'
   import Footer from '@/components/Footer.vue'
   import Siteinfo from '@/components/Siteinfo.vue'
@@ -63,16 +60,6 @@
     }
   </script>
   <style scoped>
-    .archive{
-      min-height:calc(100vh - 210px);
-      box-sizing:border-box;
-      width:100%;
-      background-color:#BBE4FF;
-      color:#fff;
-    }
-    .title{
-      display:block;
-    }
     @keyframes in{
       from{
         padding-right:0;
@@ -97,4 +84,10 @@
       padding-right:0;
       animation:out 0.5s ease-out;
     }
+  .left20{
+    margin-left:20px;
+  }
+  .left40{
+    margin-left:40px;
+  }
   </style>

@@ -4,7 +4,8 @@
       <Header/>
       <div class="archive">
           <div class="article-content"> 
-              <h1>{{artList.title}}</h1>
+              <p class="fontA">{{artList.title}}</p>
+              <p>{{artList.date}}</p>
               <p>Vuex是一个专门为vue.js应用程序开发的状态管理模式（data函数内的变量称为状态）。
 
                   当构建一个大中型的单页面应用程序时，Vuex可以更好的帮助我们在组件外部统一管理状态。（可以理解为生成全局变量）
@@ -46,6 +47,7 @@
   </template>
     
   <script>
+  import './../../assets/css/articles.css'
   import Header from '@/components/Header.vue'
   import Footer from '@/components/Footer.vue'
   import Siteinfo from '@/components/Siteinfo.vue'
@@ -77,7 +79,6 @@
       box-sizing:border-box;
       width:100%;
       background-color:#BBE4FF;
-      color:#fff;
     }
     .title{
       display:block;
