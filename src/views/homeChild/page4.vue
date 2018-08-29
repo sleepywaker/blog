@@ -5,9 +5,9 @@
         <p class="fontE">{{art10.date}}</p>  
         <p class="mainArt">&nbsp&nbsp&nbsp&nbsp那天夕阳下的奔跑，那是我逝去的青春</p>
         <p class="mainArt">&nbsp&nbsp&nbsp&nbsp昨天晚上在网吧门前蹭网，看到一对年轻情侣吵架，突然那个女的指着我说：“你要有他一半帅，我们会吵架？”
-          我刚想说话，突然那个男的又指着我说：“我要有他一半帅，我会看上你？”这TM的，我这蹭个网关我屁事orz</p>                                        
+          我刚想说话，突然那个男的又指着我说：“我要有他一半帅，我会看上你？”这TM的，我这蹭个网关我屁事orz</p>
+        <router-link to="art10" class="read-whole">阅读全文>></router-link>                                        
       </div>
-        <router-link to="art10" class="read-whole">阅读全文>></router-link>
     </div>
 </div>
 </template>

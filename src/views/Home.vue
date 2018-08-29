@@ -51,6 +51,7 @@ export default {
 a{
   display:inline-block;
   margin-right:20px;
+  text-decoration: none;
 }
 @keyframes in{
     from{
