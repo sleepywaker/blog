@@ -6,7 +6,7 @@
                 <i></i>
                 <i></i>
             </div>
-            <a href="#top"><div class="up"></div></a>  
+            <a href="javascript:window.scrollTo( 0, 0 );"><div class="up"></div></a>  
         </div>
         <div :class="{infoIn:this.$store.state.isInfoShow,infoOut:!this.$store.state.isInfoShow}">
             <div>
