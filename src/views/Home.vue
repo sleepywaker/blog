@@ -5,7 +5,7 @@
   <div class="home">
       <router-view></router-view>
       <div class="linkStyle">
-      <router-link to="/1">1</router-link><router-link to="/2">2</router-link><router-link to="/3">3</router-link> <router-link to="/page2">下一页</router-link>
+      <router-link to="/1" :class="{chosen:choseFirst}" @click.native="choseOne">1</router-link><router-link to="/2" :class="{chosen:choseSecond}" @click.native="choseTwo">2</router-link><router-link to="/3" :class="{chosen:choseThird}" @click.native="choseThree">3</router-link> <router-link to="/page2">下一页</router-link>
       </div>
   </div>
   <Footer/>
@@ -21,12 +21,32 @@ import Siteinfo from '@/components/Siteinfo.vue'
 export default {
   data(){
     return {
+      choseFirst:true,
+      choseSecond:false,
+      choseThird:false
     }
   },
   components:{
     Header,
     Footer,
     Siteinfo
+  },
+  methods:{
+    choseOne(){
+      this.choseFirst=true;
+      this.choseSecond=false;
+      this.choseThird=false;
+    },
+    choseTwo(){
+      this.choseFirst=false;
+      this.choseSecond=true;
+      this.choseThird=false;
+    },
+    choseThree(){
+      this.choseFirst=false;
+      this.choseSecond=false;
+      this.choseThird=true;
+    }
   }
 }
 </script>
@@ -52,6 +72,9 @@ a{
   display:inline-block;
   margin-right:20px;
   text-decoration: none;
+}
+.chosen{
+  color:#1A94E6;
 }
 @keyframes in{
     from{

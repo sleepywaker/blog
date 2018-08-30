@@ -5,7 +5,7 @@
   <div class="home">
       <router-view></router-view>
       <div class="linkStyle">
-     <router-link to="/">上一页</router-link> <router-link to="/4">4</router-link><router-link to="/5">5</router-link><router-link to="/6">6</router-link>
+     <router-link to="/">上一页</router-link> <router-link to="/4" :class="{chosen:chose4}" @click.native="choseOne">4</router-link><router-link to="/5" :class="{chosen:chose5}" @click.native="choseTwo">5</router-link><router-link to="/6" :class="{chosen:chose6}" @click.native="choseThree">6</router-link>
       </div>
   </div>
   <Footer/>
@@ -21,12 +21,32 @@ import Siteinfo from '@/components/Siteinfo.vue'
 export default {
   data(){
     return {
+      chose4:true,
+      chose5:false,
+      chose6:false
     }
   },
   components:{
     Header,
     Footer,
     Siteinfo
+  },
+  methods:{
+    choseOne(){
+      this.chose4=true;
+      this.chose5=false;
+      this.chose6=false;
+    },
+    choseTwo(){
+      this.chose4=false;
+      this.chose5=true;
+      this.chose6=false;
+    },
+    choseThree(){
+      this.chose4=false;
+      this.chose5=false;
+      this.chose6=true;
+    }
   }
 }
 </script>
@@ -52,6 +72,9 @@ a{
   display:inline-block;
   margin-right:20px;
   text-decoration: none;
+}
+.chosen{
+  color:#1A94E6;
 }
 @keyframes in{
     from{
